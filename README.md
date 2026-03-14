@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -62,7 +61,7 @@
         }
         .cocktail-card {
             display: flex;
-            align-items: center;
+            align-items: flex-start; /* выровняли по верхнему краю, чтобы текст не съезжал */
             background: white;
             border-radius: 24px;
             padding: 12px 16px;
@@ -88,11 +87,9 @@
             color: #4f3f30;
             box-shadow: inset 0 -2px 0 rgba(0,0,0,0.05);
         }
-        /* Цветовые акценты для категорий (можно менять) */
-        .category-milk .cocktail-image { background: #f9e5d2; }  /* молочные */
-        .category-non-alcohol .cocktail-image { background: #d7f0e6; } /* безалкогольные */
-        .category-alcohol .cocktail-image { background: #d9e5f5; } /* алкогольные */
-        .category-nybull .cocktail-image { background: #fde1d3; } /* нью-йорк булл */
+        .category-milk .cocktail-image { background: #f9e5d2; }
+        .category-non-alcohol .cocktail-image { background: #d7f0e6; }
+        .category-alcohol .cocktail-image { background: #d9e5f5; }
 
         .cocktail-info {
             flex: 1;
@@ -100,19 +97,18 @@
         .cocktail-info h3 {
             font-size: 1.2rem;
             font-weight: 600;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             color: #1e1e1e;
             line-height: 1.3;
         }
         .ingredients {
             font-size: 0.85rem;
             color: #6f6f6f;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            /* убрали ограничение по высоте — теперь текст виден полностью */
+            white-space: normal;
+            overflow: visible;
         }
         .details {
             display: flex;
@@ -151,7 +147,7 @@
     <h1>🍸 FOROS</h1>
     <div class="subhead">коктейльная карта</div>
 
-    <!-- Категория: Молочные коктейли -->
+    <!-- Молочные коктейли -->
     <section class="category category-milk">
         <div class="category-title">🥛 Молочные коктейли <span>300 мл</span></div>
         <div class="cocktail-grid">
@@ -190,9 +186,9 @@
         </div>
     </section>
 
-    <!-- Категория: Безалкогольные коктейли -->
+    <!-- Безалкогольные коктейли -->
     <section class="category category-non-alcohol">
-        <div class="category-title">🧃 Безалкогольные <span>разный объём</span></div>
+        <div class="category-title">🧃 Безалкогольные</div>
         <div class="cocktail-grid">
             <div class="cocktail-card">
                 <div class="cocktail-image">🍊</div>
@@ -214,7 +210,7 @@
                 <div class="cocktail-image">🥤</div>
                 <div class="cocktail-info">
                     <h3>Сливочная кола</h3>
-                    <p class="ingredients">Колбашная кола, мороженое, сироп</p>
+                    <p class="ingredients">Кола, мороженое, сироп</p>
                     <div class="details"><span class="volume">500 мл</span><span class="price">550</span></div>
                 </div>
             </div>
@@ -230,17 +226,18 @@
                 <div class="cocktail-image">🥥</div>
                 <div class="cocktail-info">
                     <h3>Пина Колада</h3>
-                    <p class="ingredients">Ананасовый сок, сливки, сахарный сироп, взбитые сливки</p>
+                    <p class="ingredients">Ананасовый сок, сливки, кокосовый сироп, взбитые сливки</p>
                     <div class="details"><span class="volume">300 мл</span><span class="price">550</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Категория: Алкогольные коктейли -->
+    <!-- Алкогольные коктейли (все в одной категории) -->
     <section class="category category-alcohol">
-        <div class="category-title">🍹 Алкогольные <span>разный объём</span></div>
+        <div class="category-title">🍹 Алкогольные</div>
         <div class="cocktail-grid">
+            <!-- Апероль Спритц -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍊</div>
                 <div class="cocktail-info">
@@ -249,6 +246,7 @@
                     <div class="details"><span class="volume">350 мл</span><span class="price">950</span></div>
                 </div>
             </div>
+            <!-- Фиеро Тоник -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍸</div>
                 <div class="cocktail-info">
@@ -257,6 +255,7 @@
                     <div class="details"><span class="volume">400 мл</span><span class="price">750</span></div>
                 </div>
             </div>
+            <!-- Арбузный Джин -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍉</div>
                 <div class="cocktail-info">
@@ -265,53 +264,52 @@
                     <div class="details"><span class="volume">350 мл</span><span class="price">660</span></div>
                 </div>
             </div>
+            <!-- Текила Санрайз (полный состав) -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🌅</div>
                 <div class="cocktail-info">
                     <h3>Текила Санрайз</h3>
-                    <p class="ingredients">Текила серебряная, сироп гренландия, апельсин, апельсиновый сок</p>
+                    <p class="ingredients">Текила серебряная, сироп Гренадин, апельсиновый сок, апельсин</p>
                     <div class="details"><span class="volume">350 мл</span><span class="price">660</span></div>
                 </div>
             </div>
+            <!-- Бабл-гам -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🫧</div>
                 <div class="cocktail-info">
                     <h3>Бабл-гам</h3>
-                    <p class="ingredients">Ликер Банановый, ликер Амаретто, ликер Блю кораса, сливки, лимонный сок</p>
+                    <p class="ingredients">Ликер Банановый, ликер Амаретто, ликер Блю курасао, сливки, лимонный сок</p>
                     <div class="details"><span class="volume">150 мл</span><span class="price">550</span></div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Категория: Нью Йорк Булл (и все последующие) -->
-    <section class="category category-nybull">
-        <div class="category-title">🥃 Нью Йорк Булл и другие</div>
-        <div class="cocktail-grid">
+            <!-- Нью Йорк Булл (полный состав) -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🥤</div>
                 <div class="cocktail-info">
                     <h3>Нью Йорк Булл</h3>
-                    <p class="ingredients">РЕД БУЛЛ классик, Виски, сироп черная смородина, лимонный сок, красное вино</p>
+                    <p class="ingredients">Виски, Ред Булл классик, сироп черная смородина, лимонный сок, красное вино</p>
                     <div class="details"><span class="volume">200 мл</span><span class="price">650</span></div>
                 </div>
             </div>
+            <!-- Беллини -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🥂</div>
                 <div class="cocktail-info">
-                    <h3>Беллинг</h3>
+                    <h3>Беллини</h3>
                     <p class="ingredients">Игристое, пюре персика, лимонный сок, сахарный сироп</p>
                     <div class="details"><span class="volume">200 мл</span><span class="price">550</span></div>
                 </div>
             </div>
+            <!-- Виски Кола -->
             <div class="cocktail-card">
-                <div class="cocktail-image">☕</div>
+                <div class="cocktail-image">🥤</div>
                 <div class="cocktail-info">
-                    <h3>Виски Коха</h3>
-                    <p class="ingredients">Виски, кораллома, лимонный сок</p>
+                    <h3>Виски Кола</h3>
+                    <p class="ingredients">Кола, виски, лимон</p>
                     <div class="details"><span class="volume">150 мл</span><span class="price">650</span></div>
                 </div>
             </div>
+            <!-- Маргарита -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍋</div>
                 <div class="cocktail-info">
@@ -320,22 +318,34 @@
                     <div class="details"><span class="volume">300 мл</span><span class="price">750</span></div>
                 </div>
             </div>
+            <!-- Голубые Гавайи (полный состав) -->
             <div class="cocktail-card">
                 <div class="cocktail-image">💙</div>
                 <div class="cocktail-info">
                     <h3>Голубые Гавайи</h3>
-                    <p class="ingredients">Ликер Магнит, Ром белый, ликер Блю Кораса, ананасовый сок, лимонный сок</p>
+                    <p class="ingredients">Малибу, ром белый, ликер Блю курасао, ананасовый сок, лимонный сок</p>
                     <div class="details"><span class="volume">200 мл</span><span class="price">650</span></div>
                 </div>
             </div>
+            <!-- Красная площадь -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍓</div>
                 <div class="cocktail-info">
                     <h3>Красная площадь</h3>
-                    <p class="ingredients">Березовая, малиновая пюре, ванильный сироп, лимонный сок</p>
+                    <p class="ingredients">Бехеровка, пюре малиновое, ванильный сироп, лимонный сок</p>
                     <div class="details"><span class="volume">300 мл</span><span class="price">550</span></div>
                 </div>
             </div>
+            <!-- Лимонный пирог -->
+            <div class="cocktail-card">
+                <div class="cocktail-image">🍋</div>
+                <div class="cocktail-info">
+                    <h3>Лимонный пирог</h3>
+                    <p class="ingredients">Ликер Адвокат, ванильный сироп, водка, лимончелла, лимонный сок</p>
+                    <div class="details"><span class="volume">350 мл</span><span class="price">650</span></div>
+                </div>
+            </div>
+            <!-- Джин Тоник -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍈</div>
                 <div class="cocktail-info">
@@ -344,54 +354,52 @@
                     <div class="details"><span class="volume">300 мл</span><span class="price">750</span></div>
                 </div>
             </div>
-            <div class="cocktail-card">
-                <div class="cocktail-image">🍳</div>
-                <div class="cocktail-info">
-                    <h3>Айчынный Пирот</h3>
-                    <p class="ingredients">Ликер Адвохат, лимонный сок, ананасовый сироп, апельсинский сок</p>
-                    <div class="details"><span class="volume">350 мл</span><span class="price">650</span></div>
-                </div>
-            </div>
+            <!-- Мохито (алкогольный) -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🌿</div>
                 <div class="cocktail-info">
-                    <h3>Мохито (алкогольный)</h3>
+                    <h3>Мохито</h3>
                     <p class="ingredients">Ром белый, вода газированная, сахарный сироп, мята, лайм</p>
                     <div class="details"><span class="volume">400 мл</span><span class="price">950</span></div>
                 </div>
             </div>
+            <!-- Лонг Айленд -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🏝️</div>
                 <div class="cocktail-info">
                     <h3>Лонг Айленд</h3>
-                    <p class="ingredients">Джин, Вода, Ром Белый, Текила серебряная, ликер Трипл Сек, кораллома, лимонный сок</p>
+                    <p class="ingredients">Джин, водка, ром белый, текила серебряная, ликер Трипл Сек, кола, лимонный сок</p>
                     <div class="details"><span class="volume">300 мл</span><span class="price">600</span></div>
                 </div>
             </div>
+            <!-- Куба Либре -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🥤</div>
                 <div class="cocktail-info">
                     <h3>Куба Либре</h3>
-                    <p class="ingredients">Ром черный, кораллома, сок лайма</p>
+                    <p class="ingredients">Ром черный, кола, сок лайма</p>
                     <div class="details"><span class="volume">200 мл</span><span class="price">650</span></div>
                 </div>
             </div>
+            <!-- Негронни -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍊</div>
                 <div class="cocktail-info">
                     <h3>Негронни</h3>
-                    <p class="ingredients">Джин, Ликер Кампар, Мартини Россо, апельсин</p>
+                    <p class="ingredients">Джин, ликер Кампари, Мартини Россо, апельсин</p>
                     <div class="details"><span class="volume">150 мл</span><span class="price">550</span></div>
                 </div>
             </div>
+            <!-- Кайперинья -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍈</div>
                 <div class="cocktail-info">
-                    <h3>Кайперанья</h3>
-                    <p class="ingredients">Каша, тростниковый сахар, лайм</p>
+                    <h3>Кайперинья</h3>
+                    <p class="ingredients">Кашаса, тростниковый сахар, лайм</p>
                     <div class="details"><span class="volume">150 мл</span><span class="price">550</span></div>
                 </div>
             </div>
+            <!-- Виски Сауэр -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🥚</div>
                 <div class="cocktail-info">
@@ -400,10 +408,11 @@
                     <div class="details"><span class="volume">200 мл</span><span class="price">750</span></div>
                 </div>
             </div>
+            <!-- Глинтвейн -->
             <div class="cocktail-card">
                 <div class="cocktail-image">🍷</div>
                 <div class="cocktail-info">
-                    <h3>Глинтвейн Классический</h3>
+                    <h3>Глинтвейн классический</h3>
                     <p class="ingredients">Красное вино, яблоко, апельсин, мед, специи</p>
                     <div class="details"><span class="volume">150 мл</span><span class="price">650</span></div>
                 </div>
@@ -412,8 +421,7 @@
     </section>
 
     <div class="footer-note">
-        ⚡ Сканируй QR-код, чтобы всегда иметь меню под рукой
+        Сканируй QR-код, чтобы всегда иметь меню под рукой
     </div>
 </body>
 </html>
-```
